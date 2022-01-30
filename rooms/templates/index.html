@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row" style="width: 90%">
+    <div class="card" style="padding:20px; margin-top: 20px;">
+        <center><h3>Habitaciones almacenadas</h3></center>
+        <div class="right" style="padding-bottom: 20px;">
+            <a class="btn-large btn_new_room waves-effect" style="background-color:#0066ff">
+                Cargar habitación
+            </a>
+        </div>
+        <table id="roomsTable" class="highlight hover cell-border"  data-page-length='10' width="100%">
+            <thead>
+                <tr>
+                    <th>Fecha </th>
+                    <th>Hora </th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in rooms %}
+                <tr>
+                    <td>{{room.created_at | date:"d M Y"}}</td>
+                    <td>{{room.created_at | date:"g:i a"}}</td>
+                    <td>{{room.name}}</td>
+                    <td ><a href="{{room.id}}" class="waves-effect waves-light"><i class="material-icons">remove_red_eye</i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include "create.html" %}
+
+{% endblock content %}
+
+{% block js %}
+
+<script type="text/javascript">
+
+     $(document).ready(function() {
+        $('#roomsTable').DataTable({
+            "responsive": true,
+            "bLengthChange": false,
+            "language": {
+                "sProcessing":     "Procesando...",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Registros del _START_ al _END_.",
+                "sInfoEmpty":      "",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "<i class='material-icons '>keyboard_arrow_right</i>",
+                    "sPrevious": "<i class='material-icons '>keyboard_arrow_left</i>"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+            },
+        });
+        $('#modalAddRoom').modal({
+            onCloseStart: function() {
+                $(".addRoom").trigger("reset");
+            }
+        });
+    });
+
+    
+    $(document).on("click",".btn_new_room",function(event){
+        $('#modalAddRoom').modal('open');
+    });
+
+</script>
+
+{% endblock js %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .gray {
+        background-color: #9e9e9e;
+    }
+
+    table, td {padding: 0px; border:1px solid;}
+
+</style>
+<div class="row" style="width: 60%">
+    <div class="card" style="padding:20px; margin-top: 20px;">
+        <center><h3>{{room.name}}</h3></center>
+        <div class="left" style="padding-bottom: 20px;">
+            <a href="/rooms" class="btn-small grey lighten-1 waves-effect">
+                <i class="material-icons">arrow_back</i>
+            </a>
+        </div>
+        <table class="bordered" width="100%" style="padding: 0px;" cellspacing="0" cellpadding="0">
+            <tbody>
+                {% for i in matrix %}
+                <tr>
+                    {% for j in i %}
+                        {% if j == 3 %}
+                            <td > <center><img src="/media/images/bombilla.png" height="40px"> </center></td>
+                        {% else %}
+                            <td class="{% if j == 1 %} gray {% endif %}" style="padding:10px"> &nbsp; </td>
+                        {% endif %}
+                    {% endfor %}    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}

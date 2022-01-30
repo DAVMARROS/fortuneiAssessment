@@ -1,0 +1,50 @@
+<div id="modalAddRoom" class="modal modal-small">
+    <form class="addRoom">
+        <div class="modal-content">
+            <center><h4>Nueva habitación</h4></center>
+            <br/>
+            <div class="row">
+                <div class="col  offset-m2 s12 m12 l12">
+                    <div class="row">
+                        <div class="input-field col s12 m8 l12">
+                            <input id="name" name="name" type="text" required>
+                            <label  for="name" >Nombre</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m8 l12">
+                            <input id="file" type="file" name="file" accept=".txt" required>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn modal-close waves-effect grey btn-small">Cancelar</button>
+            <button type="submit" class="btn waves-effect green" style="margin-left:30px">Guardar</a>
+        </div>
+    </form>
+</div>
+
+
+<script>    
+    $(document).on("submit",".addRoom",function(event){
+        event.preventDefault();
+        var formData= new FormData($(this)[0]);
+        $.ajax({
+            url:"/rooms/create",
+            method: "POST",
+            data:formData,
+            processData: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            success: function(data){
+                $('#modalAddRoom').modal('close');
+                location.href="/rooms";
+            },
+            error: function(data){
+                console.log("error");
+            }
+        });
+    });
+
+</script>

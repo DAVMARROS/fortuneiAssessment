@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title %}<title>Fortunei</title> {% endblock title %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen,projection">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#0066ff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.2/css/responsive.dataTables.min.css">
+     
+    <nav style="background-color:#FFFFFF">
+        <div class="nav-wrapper">
+          
+            <ul class="left" style="margin-left: 10%">
+                <li><a href="/rooms" class="brand-logo"><img src="/media/images/logo.png" height="50px"></li>
+            </ul>
+            <ul class="right" style="margin-right: 10%">
+                <li><a href="https://www.facebook.com/TheFortuneiWork" target="_blank"><img src="/media/images/facebook.png" height="25px" style="margin-top:20px"></a></li>
+                <li><a href="https://www.instagram.com/fortuneiwork/" target="_blank"><img src="/media/images/instagram.png" height="25px" style="margin-top:20px"></a></li>
+                <li><a href="https://www.linkedin.com/company/fortunei" target="_blank"><img src="/media/images/linkedin.png" height="25px" style="margin-top:20px"></a></li>
+                <li><a href="https://thefortuneiwork.com/" target="_blank"><i class="material-icons black-text">wifi</i></a></li>
+            </ul>
+        </div>
+    </nav>
+</head>
+<body>
+    <header></header>
+<main>
+
+	{% block content %}
+	{% endblock content%}
+
+</main>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.2/js/dataTables.responsive.min.js"></script>
+
+	{% block js %}
+	{% endblock js %}
+
+</body>
+</html>
+
